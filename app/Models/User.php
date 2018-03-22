@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function feed()
     {
-        $user_ids = Auth::user()->following->pluck('id')->toArray();
+        $user_ids = Auth::user()->followings->pluck('id')->toArray();
         array_push($user_ids, Auth::user()->id);
         return Status::whereIn('user_id', $user_ids)
                             ->with('user')
